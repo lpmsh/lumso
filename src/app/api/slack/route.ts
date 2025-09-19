@@ -11,6 +11,7 @@ import { slack } from "@/lib/slack";
 import { generateResponse } from "@/lib/ai";
 
 export async function POST(req: NextRequest) {
+  return new NextResponse();
   // add verification/signing check later
   const data = (await req.json()) as IncomingPayload;
 
@@ -19,7 +20,7 @@ export async function POST(req: NextRequest) {
   const index = pinecone
     .index(
       "messages",
-      "https://messages-8tb7xb4.svc.aped-4627-b74a.pinecone.io"
+      "https://messages-8tb7xb4.svc.aped-4627-b74a.pinecone.io",
     )
     .namespace("messages");
 
@@ -65,7 +66,7 @@ export async function POST(req: NextRequest) {
       break;
 
     case "message_deleted":
-      console.log("DELETED", data.event.text, data.event.ts)
+      console.log("DELETED", data.event.text, data.event.ts);
       await index.deleteMany({
         ts: { $eq: data.event.ts },
       });
