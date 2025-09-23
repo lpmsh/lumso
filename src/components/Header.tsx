@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { WaitlistButton } from "./WaitlistButton";
-import { Button } from "./ui/button";
 
 export function Header() {
   return (
@@ -13,7 +12,6 @@ export function Header() {
         <Link href={"/"} className="text-neutral-500 text-sm font-medium">
           Learn More
         </Link>
-        {/* <Button variant={"ghost"}>Learn More</Button> */}
         <WaitlistButton />
       </div>
     </div>

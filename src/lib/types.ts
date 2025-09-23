@@ -2,7 +2,7 @@ export interface IncomingPayload {
   token: string;
   team_id: string;
   context_team_id: string;
-  context_enterprise_id: any;
+  // context_enterprise_id: any;
   api_app_id: string;
   event: Event;
   type: string;
@@ -43,7 +43,7 @@ export interface Element2 {
 }
 
 export interface Authorization {
-  enterprise_id: any;
+  // enterprise_id: any;
   team_id: string;
   user_id: string;
   is_bot: boolean;

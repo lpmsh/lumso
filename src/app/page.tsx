@@ -11,10 +11,8 @@ import notion from "@/assets/notion.svg";
 import gmail from "@/assets/gmail.svg";
 
 import { Header } from "@/components/Header";
-import { motion } from "motion/react";
 import screenshot from "@/assets/screenshot.png";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -58,8 +56,6 @@ const items: Array<{
 ];
 
 export default function Home() {
-  const [videoActive, setVideoActive] = useState<boolean>(false);
-
   return (
     <div className="w-full min-h-dvh flex flex-col items-center">
       <div className="px-4 py-4 max-w-4xl w-full">
@@ -85,7 +81,7 @@ export default function Home() {
           </mark>
 
           <h2 className="text-neutral-500 text-lg font-medium pt-4">
-            Answers questions automatically and soon, from all your team's
+            Answers questions automatically and soon, from all your team&apos;s
             tools, not just Slack.
           </h2>
 
@@ -127,14 +123,15 @@ export default function Home() {
         </div>
 
         <div className="py-24 w-full flex flex-col">
-          <h1 className="font-bold text-5xl text-black text-left pb-1">
+          <h1 className="font-bold text-5xl text-black text-left pb-1 select-none">
             Connect{" "}
             <mark className="-py-0.5 rounded-md px-1 bg-sky-100 text-sky-500 font-bold text-5xl text-left">
               Everything
-            </mark>
+            </mark>{" "}
+            <span className="text-neutral-500 text-lg font-medium pt-4">(soon)</span>
           </h1>
-          <div className="rounded-[10px] grid md:grid-cols-3 w-full justify-items-center mt-6 gap-[2px] bg-neutral-100 p-[2px]">
-            {items.map((item, i) => (
+          <div className="select-none rounded-[10px] grid md:grid-cols-3 w-full justify-items-center mt-6 gap-[2px] bg-neutral-100 p-[2px]">
+            {items.map((item) => (
               <div
                 key={item.title}
                 className={cn(
