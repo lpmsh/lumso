@@ -81,8 +81,7 @@ export default function Home() {
           </mark>
 
           <h2 className="text-neutral-500 text-lg font-medium pt-4">
-            Answers questions automatically and soon, from all your team&apos;s
-            tools, not just Slack.
+            Lumso gives your team instant answers by connecting and synthesizing knowledge across all your tools.
           </h2>
 
           <div className="flex items-center gap-x-2 pt-6">
