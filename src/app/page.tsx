@@ -96,14 +96,14 @@ export default function Home() {
         {/* <Image src={background} alt="" className="rounded-lg w-full mt-14" /> */}
 
         <div className="max-w-full lg:w-4xl mx-auto rounded-md mt-14 ghostButton">
-          <Link
+          <div
             className="shadow-lg rounded-lg relative h-full "
-            href={"https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
-            target="_blank"
+            // href={"https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
+            // target="_blank"
           >
             <Image src={screenshot} alt="" className="z-[-1] rounded-lg" />
-            <div className="w-full h-full top-0 left-0 bg-black/20 absolute z-[100000] rounded-lg flex flex-col justify-center items-center">
-              <div className="bg-sky-500 rounded-full flex items-center justify-center p-2">
+            <div className="w-full h-full top-0 left-0 bg-black/0 absolute z-[100000] rounded-lg flex flex-col justify-center items-center">
+              {/* <div className="bg-sky-500 rounded-full flex items-center justify-center p-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -116,9 +116,9 @@ export default function Home() {
                     clipRule="evenodd"
                   />
                 </svg>
-              </div>
+              </div> */}
             </div>
-          </Link>
+          </div>
         </div>
 
         <div className="py-24 w-full flex flex-col">
