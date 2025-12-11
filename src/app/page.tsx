@@ -81,7 +81,8 @@ export default function Home() {
           </mark>
 
           <h2 className="text-neutral-500 text-lg font-medium pt-4">
-            Lumso gives your team instant answers by connecting and synthesizing knowledge across all your tools.
+            Lumso gives your team instant answers by connecting and synthesizing
+            knowledge across all your tools.
           </h2>
 
           <div className="flex items-center gap-x-2 pt-6">
@@ -93,31 +94,11 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        {/* <Image src={background} alt="" className="rounded-lg w-full mt-14" /> */}
 
         <div className="max-w-full lg:w-4xl mx-auto rounded-md mt-14 ghostButton">
-          <div
-            className="shadow-lg rounded-lg relative h-full "
-            // href={"https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
-            // target="_blank"
-          >
+          <div className="shadow-lg rounded-lg relative h-full ">
             <Image src={screenshot} alt="" className="z-[-1] rounded-lg" />
-            <div className="w-full h-full top-0 left-0 bg-black/0 absolute z-[100000] rounded-lg flex flex-col justify-center items-center">
-              {/* <div className="bg-sky-500 rounded-full flex items-center justify-center p-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="size-8 text-white"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div> */}
-            </div>
+            <div className="w-full h-full top-0 left-0 bg-black/0 absolute z-[100000] rounded-lg flex flex-col justify-center items-center"></div>
           </div>
         </div>
 
@@ -127,7 +108,9 @@ export default function Home() {
             <mark className="-py-0.5 rounded-md px-1 bg-sky-100 text-sky-500 font-bold text-5xl text-left">
               Everything
             </mark>{" "}
-            <span className="text-neutral-500 text-lg font-medium pt-4">(soon)</span>
+            <span className="text-neutral-500 text-lg font-medium pt-4">
+              (soon)
+            </span>
           </h1>
           <div className="select-none rounded-[10px] grid md:grid-cols-3 w-full justify-items-center mt-6 gap-[2px] bg-neutral-100 p-[2px]">
             {items.map((item) => (

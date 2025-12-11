@@ -2,6 +2,7 @@ import { InferenceClient } from "@huggingface/inference";
 
 const hf = new InferenceClient(process.env.HF_TOKEN);
 
+// function to classify a message as a question or not
 export async function classifyQuestionOrStatement(text: string) {
   const output = await hf.textClassification({
     model: "shahrukhx01/question-vs-statement-classifier",

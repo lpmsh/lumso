@@ -1,3 +1,4 @@
+// generated types from response
 export interface IncomingPayload {
   token: string;
   team_id: string;
@@ -13,7 +14,7 @@ export interface IncomingPayload {
   event_context: string;
 }
 
-export interface Event {
+interface Event {
   user: string;
   type: string;
   ts: string;
@@ -26,23 +27,23 @@ export interface Event {
   channel_type: string;
 }
 
-export interface Block {
+interface Block {
   type: string;
   block_id: string;
   elements: Element[];
 }
 
-export interface Element {
+interface Element {
   type: string;
   elements: Element2[];
 }
 
-export interface Element2 {
+interface Element2 {
   type: string;
   text: string;
 }
 
-export interface Authorization {
+interface Authorization {
   // enterprise_id: any;
   team_id: string;
   user_id: string;
