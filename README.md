@@ -1,4 +1,5 @@
-# A work in progress
+# Lumso
+An AI memory layer for Slack to answer repeated questions.
 
 Built in several hours at [Hack Night](https://x.com/purduehackers)
 
