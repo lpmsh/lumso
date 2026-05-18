@@ -17,9 +17,15 @@ export async function POST(req: NextRequest) {
   const index = pinecone
     .index(
       "messages",
-      "https://messages-8tb7xb4.svc.aped-4627-b74a.pinecone.io"
+      "https://messages-8tb7xb4.svc.aped-4627-b74a.pinecone.io",
     )
     .namespace("messages");
+
+  if (!data.event.type) {
+    return new NextResponse(null, {
+      status: 200,
+    });
+  }
 
   switch (data.event.type) {
     // HF classifier shahrukhx01/question-vs-statement-classifier
