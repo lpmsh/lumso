@@ -10,9 +10,16 @@ import { generateResponse } from "@/lib/ai";
 
 export async function POST(req: NextRequest) {
   // add verification/signing check later
-  const data = (await req.json()) as IncomingPayload;
+  const data = await req.json();
 
-  console.log(data.event_id);
+  // Handle Slack URL verification challenge
+  if (data.type === "url_verification") {
+    return NextResponse.json({ challenge: data.challenge });
+  }
+
+  const payload = data as IncomingPayload;
+
+  console.log(payload.event_id);
 
   const index = pinecone
     .index(
@@ -21,16 +28,16 @@ export async function POST(req: NextRequest) {
     )
     .namespace("messages");
 
-  if (!data.event.type) {
+  if (!payload.event.type) {
     return new NextResponse(null, {
       status: 200,
     });
   }
 
-  switch (data.event.type) {
+  switch (payload.event.type) {
     // HF classifier shahrukhx01/question-vs-statement-classifier
     case "message":
-      const output = await classifyQuestionOrStatement(data.event.text);
+      const output = await classifyQuestionOrStatement(payload.event.text);
 
       const messageIsQuestion = output[0].label === "LABEL_1";
 
@@ -38,22 +45,22 @@ export async function POST(req: NextRequest) {
         const response = await index.searchRecords({
           query: {
             topK: 3,
-            inputs: { text: data.event.text },
+            inputs: { text: payload.event.text },
           },
         });
 
         const responseMsg = await generateResponse({
-          question: data.event.text,
+          question: payload.event.text,
           // @ts-ignore
           hits: response.result.hits.map((h) => h.fields.text),
         });
 
         // reply to message in thread
         await slack.chat.postMessage({
-          channel: data.event.channel,
+          channel: payload.event.channel,
 
           markdown_text: responseMsg,
-          thread_ts: data.event.ts, // this option replies to the passed in message
+          thread_ts: payload.event.ts, // this option replies to the passed in message
         });
       }
 
@@ -61,16 +68,16 @@ export async function POST(req: NextRequest) {
       const res = await index.upsertRecords([
         {
           _id: nanoid(),
-          text: data.event.text,
+          text: payload.event.text,
           isQuestion: messageIsQuestion,
-          message_ts: data.event.ts,
+          message_ts: payload.event.ts,
         },
       ]);
       break;
 
     case "message_deleted":
       await index.deleteMany({
-        ts: { $eq: data.event.ts },
+        ts: { $eq: payload.event.ts },
       });
       break;
     default:
