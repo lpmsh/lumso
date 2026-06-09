@@ -17,6 +17,12 @@ export interface IncomingPayload {
 interface Event {
   user: string;
   type: string;
+  // Present on non-user messages such as the bot's own replies, edits, and
+  // deletions (e.g. "bot_message", "message_changed", "message_deleted").
+  subtype?: string;
+  // Set when the message was posted by a bot/app (including this app itself).
+  bot_id?: string;
+  app_id?: string;
   ts: string;
   client_msg_id: string;
   text: string;
